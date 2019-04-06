@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>SIAM - SEOClerks Coupon</title>
+        <script src="angular.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="html2canvas.min.js"></script>
+        <style>
+            @font-face{
+                font-family: Corbel;
+                src: url(CorbelBold.ttf)
+            }
+            #form{
+
+            }
+            #coupon{
+                width: 900px;
+                height: 420px;
+                background-image: url(bg.jpg);
+                background-position: center;
+                background-size: cover;
+                font-family: Corbel;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            #coupon>#code{
+                font-size: 65px;
+                color: white;
+                text-transform: uppercase;
+                margin-left: 570px;
+                padding-top: 150px;
+            }
+            #coupon>#validity{
+                font-size: 30px;
+                color: gray;
+                margin-left: 680px;
+                padding-top: 43px;
+            }
+            #body{
+                border: 1px solid black;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body ng-app="coupons" class="container p-3">
+        <div class="row p-5" id="body">
+            <div class="col-md-2 pt-5 text-center">
+                    Code: <input type="text" ng-model="code" class="form-control"><br>
+                    Validity: <input type="text" ng-model="date" class="form-control">
+                    <br><button class="btn btn-success" onclick="DownloadAsImage()">Save</button>
+
+            </div>
+            <div class="col-md-10">
+                    <div id="coupon">
+                            <div id="code">
+                                {{code}}
+                            </div>
+                            <div id="validity">
+                                {{date}}
+                            </div>
+                    </div>
+            </div>
+        </div>
+        <br>
+        <script>
+            angular.module("coupons",[]);
+
+
+            function downloadURI(uri, name) {
+            var link = document.createElement("a");
+
+            link.download = name;
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+            clearDynamicLink(link); 
+        }
+
+        function DownloadAsImage() {
+            var element = document.getElementById("coupon");
+            html2canvas(element).then(function (canvas) {
+                var myImage = canvas.toDataURL();
+                downloadURI(myImage, "siam-coupon.png");
+            });
+        }
+        </script>
+    </body>
+</html>
