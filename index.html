@@ -1,14 +1,14 @@
 <html>
     <head>
         <title>SIAM - SEOClerks Coupon</title>
-        <script src="angular.min.js"></script>
+        <script src="assets/angular.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="html2canvas.min.js"></script>
+        <script src="assets/html2canvas.min.js"></script>
         <style>
             @font-face{
                 font-family: Corbel;
-                src: url(CorbelBold.ttf)
+                src: url(assets/CorbelBold.ttf)
             }
             #form{
 
@@ -16,12 +16,13 @@
             #coupon{
                 width: 900px;
                 height: 420px;
-                background-image: url(bg.jpg);
+                background-image: url(assets/bg.jpg);
                 background-position: center;
                 background-size: cover;
                 font-family: Corbel;
                 margin: 0 auto;
                 overflow: hidden;
+                border-radius: 20px;
             }
             #coupon>#code{
                 font-size: 65px;
@@ -40,17 +41,20 @@
                 border: 1px solid black;
                 border-radius: 10px;
             }
+            .container{
+                max-width: 1190px;
+            }
         </style>
     </head>
     <body ng-app="coupons" class="container p-3">
         <div class="row p-5" id="body">
             <div class="col-md-2 pt-5 text-center">
-                    Code: <input type="text" ng-model="code" class="form-control"><br>
-                    Validity: <input type="text" ng-model="date" class="form-control">
+                    Code: <input type="text" ng-model="code" class="form-control" maxlength="8"><br>
+                    Validity: <input type="text" ng-model="date" class="form-control" maxlength="10">
                     <br><button class="btn btn-success" onclick="DownloadAsImage()">Save</button>
 
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                     <div id="coupon">
                             <div id="code">
                                 {{code}}
